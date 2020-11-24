@@ -15,12 +15,11 @@ public class UseAbility : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !particle.isPlaying)
         {
             particle.Play();
             GameObject cylinder = Instantiate(mesh, this.transform.position, Quaternion.identity);
             cylinder.GetComponent<Renderer>().material.SetFloat("Vector1_659CD848", Time.time);
-            Debug.Log(cylinder.GetComponent<Renderer>().material.GetFloat("Vector1_659CD848"));
             Destroy(cylinder, maxTime);
         }
 

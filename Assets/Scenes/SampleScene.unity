@@ -5146,7 +5146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particle: {fileID: 886454480}
   mesh: {fileID: 188968610921580665, guid: 33515679056710145b85cb5d79884730, type: 3}
-  maxTime: 5
+  maxTime: 1
 --- !u!1 &2138677391
 GameObject:
   m_ObjectHideFlags: 0
