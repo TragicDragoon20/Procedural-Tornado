@@ -12,6 +12,8 @@ public class ProceduralCylinder : ProceduralBase
     private int radialSegmentCount = 10;
     [SerializeField]
     private int heightSegmentCount = 5;
+    [SerializeField]
+    private bool buildCaps;
 
     public override Mesh BuildMesh()
     {
@@ -27,8 +29,11 @@ public class ProceduralCylinder : ProceduralBase
             BuildRing(meshBuilder, radialSegmentCount, centrepos, radius, v, i >0);
         }
 
-        BuildCap(meshBuilder, Vector3.zero, true);
-        BuildCap(meshBuilder, Vector3.up * height, false);
+        if (buildCaps)
+        {
+            BuildCap(meshBuilder, Vector3.zero, true);
+            BuildCap(meshBuilder, Vector3.up * height, false);
+        }
 
         return meshBuilder.CreateMesh();
     }

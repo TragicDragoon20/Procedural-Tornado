@@ -8,7 +8,7 @@ public abstract class ProceduralBase : MonoBehaviour
     // Start is called before the first frame update
     public abstract Mesh BuildMesh();
 
-    private void Start()
+    public void Start()
     {
         Mesh mesh = BuildMesh();
 
@@ -64,6 +64,40 @@ public abstract class ProceduralBase : MonoBehaviour
             Vector3 unitPos = Vector3.zero;
             unitPos.x = Mathf.Cos(angle);
             unitPos.z = Mathf.Sin(angle);
+
+            meshBuilder.Vertices.Add(centre + unitPos * radius);
+            meshBuilder.Normals.Add(unitPos);
+            meshBuilder.Uvs.Add(new Vector2((float)i / segmentCount, v));
+
+            if (i > 0 && buildTriangles)
+            {
+                int baseIndex = meshBuilder.Vertices.Count - 1;
+                int vertsPerRov = segmentCount + 1;
+
+                int index0 = baseIndex;
+                int index1 = baseIndex - 1;
+                int index2 = baseIndex - vertsPerRov;
+                int index3 = baseIndex - vertsPerRov - 1;
+
+                meshBuilder.AddTriangle(index0, index2, index1);
+                meshBuilder.AddTriangle(index2, index3, index1);
+            }
+        }
+    }
+
+    protected void BuildBendRing(MeshBuilder meshBuilder, int segmentCount, Vector3 centre, float radius, float v,
+        bool buildTriangles, Quaternion rotation)
+    {
+        float angleInc = (Mathf.PI * 2.0f) / segmentCount;
+
+        for (int i = 0; i <= segmentCount; i++)
+        {
+            float angle = angleInc * i;
+
+            Vector3 unitPos = Vector3.zero;
+            unitPos.x = Mathf.Cos(angle);
+            unitPos.z = Mathf.Sin(angle);
+            unitPos = rotation * unitPos;
 
             meshBuilder.Vertices.Add(centre + unitPos * radius);
             meshBuilder.Normals.Add(unitPos);
