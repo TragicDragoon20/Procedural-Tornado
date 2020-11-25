@@ -5,7 +5,7 @@ using UnityEngine;
 public class UseAbility : MonoBehaviour
 {
     [SerializeField]
-    private ParticleSystem[] particle;
+    private GameObject[] particles;
     [SerializeField]
     private GameObject cylinderMesh;
     [SerializeField]
@@ -20,13 +20,36 @@ public class UseAbility : MonoBehaviour
     private float currentTimer = 0.0f;
     [SerializeField]
     private float delayTime;
+    private Vector3 spawnPos;
+
+    [SerializeField]
+    private float range = 10.0f;
+
+    [SerializeField]
+    private LayerMask layer;
+    [SerializeField]
+    private Camera cam;
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !particle[0].isPlaying)
+        AoECheck();
+    }
+
+    #region AoEVFX
+
+    private void AoECheck()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && !delayStart)
         {
-            StartVfx();
-            currentTimer = delayTime;
-            delayStart = true;
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out RaycastHit hit, range, layer))
+            {
+                spawnPos = hit.point;
+                StartVfx();
+                currentTimer = delayTime;
+                delayStart = true;
+            }
         }
 
         if (delayStart)
@@ -41,30 +64,39 @@ public class UseAbility : MonoBehaviour
 
     private void StartVfx()
     {
-        particle[0].Play();
-        GameObject cylinder = Instantiate(cylinderMesh, this.transform.position, Quaternion.identity);
-        GameObject quad = Instantiate(quadMesh, this.transform.position, Quaternion.identity);
+        GameObject particle = Instantiate(particles[0], spawnPos, Quaternion.identity);
+        GameObject cylinder = Instantiate(cylinderMesh, spawnPos, Quaternion.identity);
+        GameObject quad = Instantiate(quadMesh, spawnPos, Quaternion.identity);
+
         cylinder.GetComponent<Renderer>().material.SetFloat("Vector1_659CD848", Time.time);
         cylinder.GetComponent<Renderer>().material.SetFloat("CompTime", maxTime);
         quad.GetComponent<Renderer>().material.SetFloat("StartTime", Time.time);
         quad.GetComponent<Renderer>().material.SetFloat("CompTime", maxTime);
+
         Destroy(cylinder, maxTime);
         Destroy(quad, maxTime);
+        Destroy(particle, maxTime);
     }
 
     private void EndVfx()
     {
-        delayStart = false;
-        particle[1].Play();
-        GameObject cylinder = Instantiate(cylinderMesh, this.transform.position, Quaternion.identity);
-        GameObject quad = Instantiate(quadMesh, this.transform.position, Quaternion.identity);
+        GameObject particle = Instantiate(particles[1], spawnPos, Quaternion.identity);
+        GameObject cylinder = Instantiate(cylinderMesh, spawnPos, Quaternion.identity);
+        GameObject quad = Instantiate(quadMesh, spawnPos, Quaternion.identity);
+
         cylinder.GetComponent<Renderer>().material.SetFloat("Vector1_659CD848", Time.time);
         cylinder.GetComponent<Renderer>().material.SetFloat("CompTime", 0.0f);
         cylinder.GetComponent<Renderer>().material.SetFloat("Speed", explodeSpeed);
         quad.GetComponent<Renderer>().material.SetFloat("StartTime", Time.time);
         quad.GetComponent<Renderer>().material.SetFloat("CompTime", 0.0f);
         quad.GetComponent<Renderer>().material.SetFloat("Speed", explodeSpeed);
+
         Destroy(cylinder, maxTime);
         Destroy(quad, maxTime);
+        Destroy(particle, maxTime);
+        delayStart = false;
     }
+
+    #endregion
+
 }

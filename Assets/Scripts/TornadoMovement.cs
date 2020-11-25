@@ -26,7 +26,6 @@ public class TornadoMovement : MonoBehaviour
         {
             newPos = new Vector3(originalPos.x + Random.Range(-movementRadius, movementRadius), originalPos.y,
                 originalPos.z + Random.Range(-movementRadius, movementRadius));
-            Debug.Log(newPos);
             getNewPos = false;
         }
         

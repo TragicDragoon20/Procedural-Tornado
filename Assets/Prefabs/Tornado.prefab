@@ -93,11 +93,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 221a962bdbabbfa4c86fc3f8acad02be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  height: 2
-  radius: 0.5
-  radiusBottom: 0.6
-  radiusTop: 0.9
-  heightSegmentCount: 20
+  height: 5
+  radius: 1
+  radiusBottom: 2
+  radiusTop: 4
+  heightSegmentCount: 30
   radialSegmentCount: 50
 --- !u!114 &2031742346082135613
 MonoBehaviour:
@@ -111,5 +111,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80247fd1217a38c4f81a9b0957a23d56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementRadius: 30
-  movementSpeed: 0.001
+  movementRadius: 15
+  movementSpeed: 0.01
