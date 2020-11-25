@@ -2,38 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProceduralCylinder : ProceduralBase
+public class ProceduralCircle : ProceduralBase
 {
     [SerializeField]
     private float radius = 0.5f;
     [SerializeField]
-    private float height = 1.0f;
-    [SerializeField]
     private int radialSegmentCount = 10;
-    [SerializeField]
-    private int heightSegmentCount = 5;
-    [SerializeField]
-    private bool buildCaps;
 
     public override Mesh BuildMesh()
     {
         MeshBuilder meshBuilder = new MeshBuilder();
 
-        float heightinc = height / heightSegmentCount;
-
-        for (int i = 0; i <= heightSegmentCount; i++)
-        {
-            Vector3 centrepos = Vector3.up * heightinc * i;
-            float v = (float) i / heightSegmentCount;
-
-            BuildRing(meshBuilder, radialSegmentCount, centrepos, radius, v, i >0);
-        }
-
-        if (buildCaps)
-        {
-            BuildCap(meshBuilder, Vector3.zero, true);
-            BuildCap(meshBuilder, Vector3.up * height, false);
-        }
+        BuildCap(meshBuilder, Vector3.zero, false);
 
         return meshBuilder.CreateMesh();
     }
@@ -63,9 +43,9 @@ public class ProceduralCylinder : ProceduralBase
             }
             else if (!reverseDir)
             {
-                meshBuilder.Vertices.Add(centre + unitPos * (radius));
+                meshBuilder.Vertices.Add(centre + unitPos * radius );
             }
-            
+
             meshBuilder.Normals.Add(normal);
 
             Vector2 uv = new Vector2(unitPos.x + 1.0f, unitPos.z + 1.0f * 0.5f);
@@ -77,7 +57,7 @@ public class ProceduralCylinder : ProceduralBase
 
                 if (reverseDir)
                 {
-                    meshBuilder.AddTriangle(centreVertexIndex, baseIndex -1, baseIndex);
+                    meshBuilder.AddTriangle(centreVertexIndex, baseIndex - 1, baseIndex);
                 }
                 else
                 {

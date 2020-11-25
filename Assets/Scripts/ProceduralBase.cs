@@ -99,7 +99,7 @@ public abstract class ProceduralBase : MonoBehaviour
             unitPos.z = Mathf.Sin(angle);
             unitPos = rotation * unitPos;
 
-            meshBuilder.Vertices.Add(centre + unitPos * radius);
+            meshBuilder.Vertices.Add(centre + unitPos *radius);
             meshBuilder.Normals.Add(unitPos);
             meshBuilder.Uvs.Add(new Vector2((float)i / segmentCount, v));
 
@@ -121,4 +121,40 @@ public abstract class ProceduralBase : MonoBehaviour
 
     #endregion
 
+    #region Circle
+
+    protected void BuildCircle(MeshBuilder meshBuilder, int segmentCount, Vector3 centre, float radius, float v,
+        bool buildTriangles)
+    {
+        float angleInc = (Mathf.PI * 2.0f) / segmentCount;
+
+        for (int i = 0; i <= segmentCount; i++)
+        {
+            float angle = angleInc * i;
+
+            Vector3 unitPos = Vector3.zero;
+            unitPos.x = Mathf.Cos(angle);
+            unitPos.z = Mathf.Sin(angle);
+
+            meshBuilder.Vertices.Add(centre + unitPos * radius);
+            meshBuilder.Normals.Add(unitPos);
+            meshBuilder.Uvs.Add(new Vector2((float)i / segmentCount, v));
+
+            if (i > 0 && buildTriangles)
+            {
+                int baseIndex = meshBuilder.Vertices.Count - 1;
+                int vertsPerRov = segmentCount + 1;
+
+                int index0 = baseIndex;
+                int index1 = baseIndex - 1;
+                int index2 = baseIndex - vertsPerRov;
+                int index3 = baseIndex - vertsPerRov - 1;
+
+                meshBuilder.AddTriangle(index0, index2, index1);
+                meshBuilder.AddTriangle(index2, index3, index1);
+            }
+        }
+    }
+
+    #endregion
 }
