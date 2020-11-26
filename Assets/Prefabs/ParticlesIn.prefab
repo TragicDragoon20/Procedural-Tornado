@@ -3755,7 +3755,7 @@ ParticleSystem:
     radiusScale: 1
   SubModule:
     serializedVersion: 2
-    enabled: 1
+    enabled: 0
     subEmitters:
     - serializedVersion: 3
       emitter: {fileID: 203253829590225131}
@@ -4771,6 +4771,11 @@ PrefabInstance:
         type: 3}
       propertyPath: ShapeModule.m_Rotation.x
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3268088554655251298, guid: 6ee2526b96598ed4ea986b3811d16376,
+        type: 3}
+      propertyPath: SubModule.enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3268088554655251300, guid: 6ee2526b96598ed4ea986b3811d16376,
         type: 3}
