@@ -5,7 +5,7 @@ using UnityEngine;
 public class UseAbility : MonoBehaviour
 {
     [SerializeField]
-    private GameObject[] particles;
+    private GameObject particles;
     [SerializeField]
     private GameObject cylinderMesh;
     [SerializeField]
@@ -64,7 +64,7 @@ public class UseAbility : MonoBehaviour
 
     private void StartVfx()
     {
-        GameObject particle = Instantiate(particles[0], spawnPos, Quaternion.identity);
+        GameObject particle = Instantiate(particles, spawnPos, Quaternion.identity);
         GameObject cylinder = Instantiate(cylinderMesh, spawnPos, Quaternion.identity);
         GameObject quad = Instantiate(quadMesh, spawnPos, Quaternion.identity);
 
@@ -75,12 +75,11 @@ public class UseAbility : MonoBehaviour
 
         Destroy(cylinder, maxTime);
         Destroy(quad, maxTime);
-        Destroy(particle, maxTime);
+        Destroy(particle, maxTime * 4);
     }
 
     private void EndVfx()
     {
-        GameObject particle = Instantiate(particles[1], spawnPos, Quaternion.identity);
         GameObject cylinder = Instantiate(cylinderMesh, spawnPos, Quaternion.identity);
         GameObject quad = Instantiate(quadMesh, spawnPos, Quaternion.identity);
 
@@ -93,7 +92,6 @@ public class UseAbility : MonoBehaviour
 
         Destroy(cylinder, maxTime);
         Destroy(quad, maxTime);
-        Destroy(particle, maxTime);
         delayStart = false;
     }
 
