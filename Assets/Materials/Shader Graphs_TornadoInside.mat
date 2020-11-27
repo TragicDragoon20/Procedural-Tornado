@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_Tornado
+  m_Name: Shader Graphs_TornadoInside
   m_Shader: {fileID: -6465566751694194690, guid: 8829905458b62ce429b462f201379763,
     type: 3}
   m_ShaderKeywords: 
@@ -23,7 +23,7 @@ Material:
     m_Floats:
     - Vector1_38E5AE9E: 3
     - Vector1_6CB53E6B: 0.5
-    - Vector1_739945EE: 0.61
+    - Vector1_739945EE: 0.463
     - Vector1_85D411B3: 1
     - Vector1_92DC24A3: 1
     - Vector1_A61902F5: 1
@@ -31,7 +31,7 @@ Material:
     - Vector1_DDA6AE93: 0.37
     - Vector1_FD0F85A9: 50
     m_Colors:
-    - Color_70BA70E7: {r: 0, g: 0.0042738914, b: 1, a: 1}
-    - Vector2_DDAF8560: {r: 0, g: -0.5, b: 0, a: 0}
-    - Vector2_E270E1F5: {r: 0, g: 0.19, b: 0, a: 0}
-    - Vector3_79F58435: {r: 0, g: -0.5, b: 0, a: 0}
+    - Color_70BA70E7: {r: 0.14482866, g: 0.16981131, b: 0.12415449, a: 1}
+    - Vector2_DDAF8560: {r: 0, g: -1.07, b: 0, a: 0}
+    - Vector2_E270E1F5: {r: 0, g: 0.4, b: 0, a: 0}
+    - Vector3_79F58435: {r: 0, g: -1.79, b: 0, a: 0}
