@@ -15,6 +15,7 @@ public class MeshBuilder
 
     private List<int> indicies = new List<int>();
 
+    // Adds the triangles to the list
     public void AddTriangle(int index0, int index1, int index2)
     {
         indicies.Add(index0);
@@ -22,11 +23,19 @@ public class MeshBuilder
         indicies.Add(index2);
     }
 
+    /// <summary>
+    /// Generates the mesh using the all the data that has been provided
+    /// </summary>
+    /// <returns>
+    /// returns the generated mesh
+    /// </returns>
     public Mesh CreateMesh()
     {
         Mesh mesh = new Mesh();
 
+        // Generates the vertices from the list
         mesh.vertices = vertices.ToArray();
+        // Generates the triangles from the list
         mesh.triangles = indicies.ToArray();
 
 

@@ -70,6 +70,7 @@ public class UseAbility : MonoBehaviour
 
         cylinder.GetComponent<Renderer>().material.SetFloat("Vector1_659CD848", Time.time);
         cylinder.GetComponent<Renderer>().material.SetFloat("CompTime", maxTime);
+
         quad.GetComponent<Renderer>().material.SetFloat("StartTime", Time.time);
         quad.GetComponent<Renderer>().material.SetFloat("CompTime", maxTime);
 
@@ -86,6 +87,7 @@ public class UseAbility : MonoBehaviour
         cylinder.GetComponent<Renderer>().material.SetFloat("Vector1_659CD848", Time.time);
         cylinder.GetComponent<Renderer>().material.SetFloat("CompTime", 0.0f);
         cylinder.GetComponent<Renderer>().material.SetFloat("Speed", explodeSpeed);
+
         quad.GetComponent<Renderer>().material.SetFloat("StartTime", Time.time);
         quad.GetComponent<Renderer>().material.SetFloat("CompTime", 0.0f);
         quad.GetComponent<Renderer>().material.SetFloat("Speed", explodeSpeed);

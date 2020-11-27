@@ -19,7 +19,9 @@ public class TornadoMovement : MonoBehaviour
         getNewPos = true;
     }
 
-
+    /// <summary>
+    /// gets a new position and moves the tornado towards the point based on the movement speed
+    /// </summary>
     private void Update()
     {
         if (getNewPos)
