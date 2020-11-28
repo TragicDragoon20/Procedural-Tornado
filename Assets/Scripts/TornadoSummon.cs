@@ -27,6 +27,9 @@ public class TornadoSummon : MonoBehaviour
         TornadoCheck();
     }
 
+    /// <summary>
+    /// Summons the Tornado as long as one isn't already summoned and Q has been pressed
+    /// </summary>
     private void TornadoCheck()
     {
         if (tornadoInst == null)

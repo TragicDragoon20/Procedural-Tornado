@@ -96,8 +96,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   height: 5
   radius: 1
-  radiusBottom: 2
-  radiusTop: 4
+  radiusBottomOffset: 1
+  radiusTopOffset: 2
+  maxCentreOffset: 0.26
   heightSegmentCount: 30
   radialSegmentCount: 50
 --- !u!114 &2031742346082135613
@@ -207,8 +208,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   height: 5
-  radius: 1.2
-  radiusBottom: 2
-  radiusTop: 4
+  radius: 1
+  radiusBottomOffset: 1
+  radiusTopOffset: 2
+  maxCentreOffset: 0.3
   heightSegmentCount: 30
   radialSegmentCount: 50

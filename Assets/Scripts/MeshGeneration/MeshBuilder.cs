@@ -26,9 +26,7 @@ public class MeshBuilder
     /// <summary>
     /// Generates the mesh using the all the data that has been provided
     /// </summary>
-    /// <returns>
-    /// returns the generated mesh
-    /// </returns>
+    /// <returns>The generated mesh</returns>
     public Mesh CreateMesh()
     {
         Mesh mesh = new Mesh();

@@ -2,33 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UseAbility : MonoBehaviour
+public class AoESummon : MonoBehaviour
 {
     [SerializeField]
-    private GameObject particles;
+    private GameObject particles = null;
     [SerializeField]
-    private GameObject cylinderMesh;
+    private GameObject cylinderMesh = null;
     [SerializeField]
-    private GameObject quadMesh;
+    private GameObject quadMesh = null;
 
     [SerializeField]
-    private float maxTime;
+    private float maxTime = 0.0f;
     [SerializeField]
-    private float explodeSpeed;
+    private float explodeSpeed = 0.0f;
 
     private bool delayStart;
     private float currentTimer = 0.0f;
     [SerializeField]
-    private float delayTime;
+    private float delayTime = 0.0f;
     private Vector3 spawnPos;
 
     [SerializeField]
     private float range = 10.0f;
 
     [SerializeField]
-    private LayerMask layer;
+    private LayerMask layer = 0;
     [SerializeField]
-    private Camera cam;
+    private Camera cam = null;
 
     void Update()
     {
@@ -37,6 +37,11 @@ public class UseAbility : MonoBehaviour
 
     #region AoEVFX
 
+
+    /// <summary>
+    /// Checks when the key has been pressed to summon the AoE attack
+    /// and makes sure that it can't be summoned whilst the effect is already happening
+    /// </summary>
     private void AoECheck()
     {
         if (Input.GetKeyDown(KeyCode.E) && !delayStart)
@@ -51,7 +56,7 @@ public class UseAbility : MonoBehaviour
                 delayStart = true;
             }
         }
-
+        // Waits until the delayTime has passed before summoning the second part of the AoE attack
         if (delayStart)
         {
             if (currentTimer <= 0.0f)
@@ -61,7 +66,10 @@ public class UseAbility : MonoBehaviour
             currentTimer -= Time.deltaTime;
         }
     }
-
+    /// <summary>
+    /// Summons the first part of the AoE attack
+    /// and destroys them after their effect has been completed
+    /// </summary>
     private void StartVfx()
     {
         GameObject particle = Instantiate(particles, spawnPos, Quaternion.identity);
@@ -79,6 +87,10 @@ public class UseAbility : MonoBehaviour
         Destroy(particle, maxTime * 4);
     }
 
+    /// <summary>
+    /// Summons the ending part of the AoE attack
+    /// and destroys them after the entire effect has been completed
+    /// </summary>
     private void EndVfx()
     {
         GameObject cylinder = Instantiate(cylinderMesh, spawnPos, Quaternion.identity);

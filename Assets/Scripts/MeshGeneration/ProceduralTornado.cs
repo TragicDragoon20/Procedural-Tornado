@@ -4,17 +4,23 @@ using UnityEngine;
 
 public class ProceduralTornado : ProceduralBase
 {
+    [Header("Base Dimensions")]
     [SerializeField]
     private float height = 1.0f;
     [SerializeField]
     private float radius = 1.0f;
 
+    [Header("Offset Values")]
     [Space(10)]
     [SerializeField]
     private float radiusBottomOffset = 0.5f;
     [SerializeField]
     private float radiusTopOffset = 0.5f;
+    [SerializeField]
+    [Range(0.0f, 0.4f)]
+    private float maxCentreOffset;
 
+    [Header("Segments")]
     [Space(10)]
     [SerializeField]
     private int heightSegmentCount = 10;
@@ -43,7 +49,7 @@ public class ProceduralTornado : ProceduralBase
             // Generates the the rings between the top and bottom rings with a random off set to change the radius of the rings
             if (i > 0 && i != heightSegmentCount)
             {
-                BuildRing(meshBuilder, radialSegmentCount, centrepos, radius + Random.Range(0.0f, 0.3f), v, i > 0);
+                BuildRing(meshBuilder, radialSegmentCount, centrepos, radius + Random.Range(0.0f, maxCentreOffset), v, i > 0);
             }
 
             // Generates the top ring of the tornado based on the top radius offset
