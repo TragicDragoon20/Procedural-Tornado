@@ -12,7 +12,7 @@ public abstract class ProceduralBase : MonoBehaviour
     public abstract Mesh BuildMesh();
 
     /// <summary>
-    /// BBuilds the mesh and assigns 
+    /// Builds the mesh and assigns 
     /// </summary>
     public void Start()
     {
