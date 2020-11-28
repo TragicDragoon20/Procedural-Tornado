@@ -18,6 +18,7 @@ public class TornadoPull : MonoBehaviour
 
     private void Update()
     {
+        // Gets pull able objects within the given radius
         Collider[] colliders = Physics.OverlapSphere(pullCentre.position, pullRadius, layer);
         for (int i = 0; i < colliders.Length; i++)
         {
@@ -25,6 +26,11 @@ public class TornadoPull : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Adds the force to the objects within the radius
+    /// </summary>
+    /// <param name="co">The object to add force to</param>
+    /// <returns></returns>
     IEnumerator pull(Collider co)
     {
         Vector3 forceDir = pullCentre.position - co.transform.position;
