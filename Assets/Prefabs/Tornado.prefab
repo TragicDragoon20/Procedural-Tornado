@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 221a962bdbabbfa4c86fc3f8acad02be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  height: 5
+  height: 7
   radius: 1
   radiusBottomOffset: 1
   radiusTopOffset: 2
@@ -257,10 +257,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 221a962bdbabbfa4c86fc3f8acad02be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  height: 5
-  radius: 1
+  height: 6.9
+  radius: 1.2
   radiusBottomOffset: 1
-  radiusTopOffset: 2
-  maxCentreOffset: 0.3
+  radiusTopOffset: 5
+  maxCentreOffset: 0.117
   heightSegmentCount: 30
   radialSegmentCount: 50
