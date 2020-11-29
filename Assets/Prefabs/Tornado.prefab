@@ -161,7 +161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pullCentre: {fileID: 1888225483787681698}
   pullRadius: 10
-  pullForce: 2
+  pullForce: 50
   layer:
     serializedVersion: 2
     m_Bits: 512
